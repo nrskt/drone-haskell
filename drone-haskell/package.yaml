@@ -1,0 +1,67 @@
+name:                drone-haskell
+version:             0.1.0.0
+#synopsis:
+#description:
+homepage:            https://github.com/githubuser/drone-haskell#readme
+license:             BSD3
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2017 Author name here
+category:            Web
+extra-source-files:
+- README.md
+
+dependencies:
+  - QuickCheck
+  - aeson
+  - base >= 4.7 && < 5
+  - bytestring
+  - constraints
+  - extensible
+  - http-api-data
+  - lens
+  - quickcheck-instances
+  - scientific
+  - text
+  - time
+  - unordered-containers
+  - uuid-types
+  - servant
+  - servant-server
+  - warp
+  - wai
+
+library:
+  source-dirs: src
+  ghc-options:
+    - -Wall
+    - -fno-warn-orphans
+
+executables:
+  drone-haskell:
+    source-dirs:      app
+    main:             Main.hs
+    dependencies:
+      - drone-haskell
+
+tests:
+  docktest:
+    main: Doctesting.hs
+    source-dirs:
+      - test
+      - src
+    ghc-options: -rtsopts
+    dependencies:
+      - doctest
+      - doctest-discover
+  spec:
+    main: Spec.hs
+    source-dirs:
+      - test
+      - src
+    ghc-options: -rtsopts
+    dependencies:
+      - hspec
+      - hspec-discover
+      - hspec-wai
+      - hspec-wai-json
