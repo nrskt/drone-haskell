@@ -12,7 +12,9 @@ pipeline:
     image: fpco/stack-build:lts-9.10
     commands:
       - cd drone-haskell
-      - ls -al ~/
+      - touch ~/test
+      - ls -al ~/.stack
+
 
   rebuild-cache:
     image: drillster/drone-volume-cache
