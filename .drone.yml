@@ -8,5 +8,6 @@ pipeline:
       - pwd
       - touch ~/.stack/`date "+%Y-%m-%d-%H_%M_%S"`
       - ls -al ~/.stack
+      - sleep 20s
     volumes:
       - /root/.stack:/root/.stack
