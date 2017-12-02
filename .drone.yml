@@ -4,10 +4,8 @@ pipeline:
     image: fpco/stack-build:lts-9.10
     commands:
       - cd drone-haskell
-      - cd ~/.stack
-      - pwd
-      - touch ~/.stack/`date "+%Y-%m-%d-%H_%M_%S"`
-      - ls -al ~/.stack
-      - sleep 20s
+      - stack setup
+      - stack build
+      - stack test
     volumes:
       - /root/.stack:/root/.stack
