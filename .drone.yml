@@ -1,12 +1,4 @@
 pipeline:
-  restore-cache:
-    image: drillster/drone-volume-cache
-    restore: true
-    mount:
-      - /root/.stack
-    volumes:
-      - /tmp/cache:/cache
-    ttl: 7
 
   build:
     image: fpco/stack-build:lts-9.10
@@ -16,13 +8,5 @@ pipeline:
       - pwd
       - touch ~/.stack/`date "+%Y-%m-%d-%H_%M_%S"`
       - ls -al ~/.stack
-
-
-  rebuild-cache:
-    image: drillster/drone-volume-cache
-    rebuild: true
-    mount:
-      - /root/.stack
     volumes:
-      - /tmp/cache:/cache
-    ttl: 7
+      - /root/.stack:/root/.stack
