@@ -5,7 +5,7 @@ pipeline:
     commands:
       - df -h
       - cd drone-haskell
-      - stack setup
+      - stack setup --reinstall
       - stack build
       - stack test
     volumes:
