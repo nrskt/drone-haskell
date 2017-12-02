@@ -7,3 +7,5 @@ pipeline:
       - stack setup
       - stack build
       - stack test
+    volumes:
+      - /root/.stack:/root/.stack
