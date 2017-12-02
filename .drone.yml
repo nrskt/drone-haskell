@@ -12,7 +12,7 @@ pipeline:
     image: fpco/stack-build:lts-9.10
     commands:
       - cd drone-haskell
-      - touch ~/test
+      - touch ~/.stack/test
       - ls -al ~/.stack
 
 
