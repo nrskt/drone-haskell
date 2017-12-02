@@ -8,5 +8,3 @@ pipeline:
       - stack setup --reinstall
       - stack build
       - stack test
-    volumes:
-      - /root/.stack:/root/.stack
