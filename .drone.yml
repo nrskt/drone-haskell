@@ -1,4 +1,13 @@
 pipeline:
+  restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ~/.stack
+    volumes:
+      - /tmp/cache:/cache
+    ttl: 7
+
   build:
     image: fpco/stack-build:lts-9.10
     commands:
@@ -6,3 +15,12 @@ pipeline:
       - stack setup
       - stack build
       - stack test
+
+  rebuild-cache:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ~/.stack
+    volumes:
+      - /tmp/cache:/cache
+    ttl: 7
