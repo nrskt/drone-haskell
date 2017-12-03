@@ -1,0 +1,15 @@
+pipeline:
+
+  build:
+    image: nrskt/haskell-build
+    commands:
+      - cd drone-haskell
+      - stack build
+
+  test:
+    image: nrskt/haskell-build
+    commands:
+      - pwd
+      - ls -al
+      - cd drone-haskell
+      - ls -al
