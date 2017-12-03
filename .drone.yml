@@ -1,28 +1,8 @@
 pipeline:
 
-  restore-cache:
-    image: drillster/drone-volume-cache
-    restore: true
-    mount:
-      - ./.stack
-    volumes:
-      - /tmp/cache:/cache
-    ttl: 7
-
   build:
     image: nrskt/haskell-build
     commands:
-      - if [ -d .stack ]; then cp -a $CI_WORKSPACE/.stack ~/.stack ; fi
       - cd drone-haskell
       - stack build
       - stack test
-      - cp -a ~/.stack $CI_WORKSPACE/.stack
-
-  rebuild-cache:
-    image: drillster/drone-volume-cache
-    rebuild: true
-    mount:
-      - ./.stack
-    volumes:
-      - /tmp/cache:/cache
-    ttl: 7
