@@ -1,8 +1,16 @@
 pipeline:
 
+  restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ./.stack
+    volumes:
+      - /tmp/cache:/cache
+    ttl: 7
+
   build:
     image: nrskt/haskell-build
     commands:
-      - cd drone-haskell
-      - stack build
-      - stack test
+      - pwd
+      - env
