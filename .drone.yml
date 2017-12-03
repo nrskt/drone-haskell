@@ -16,3 +16,12 @@ pipeline:
       - pwd
       - env
       - cp -a ~/.stack ./.stack
+
+  rebuild-cache:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ./.stack
+    volumes:
+      - /tmp/cache:/cache
+    ttl: 7
