@@ -12,7 +12,7 @@ pipeline:
   build:
     image: nrskt/haskell-build
     commands:
-      - cp -a ./.stack ~/.stack
+      - if [ -d .stack ]; then cp -a ./.stack ~/.stack ; fi
       - pwd
       - env
       - cp -a ~/.stack ./.stack
