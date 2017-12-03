@@ -1,7 +1,7 @@
 pipeline:
 
   build:
-    image: fpco/stack-build:lts-9.10
+    image: nrskt/haskell-build
     commands:
       - df -h
       - cd drone-haskell
