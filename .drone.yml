@@ -3,8 +3,6 @@ pipeline:
   build:
     image: nrskt/haskell-build
     commands:
-      - df -h
       - cd drone-haskell
-      - stack setup
       - stack build
       - stack test
