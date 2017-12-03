@@ -12,10 +12,11 @@ pipeline:
   build:
     image: nrskt/haskell-build
     commands:
-      - if [ -d .stack ]; then cp -a ./.stack ~/.stack ; fi
-      - pwd
-      - env
-      - cp -a ~/.stack ./.stack
+      - if [ -d .stack ]; then cp -a $CI_WORKSPACE/.stack ~/.stack ; fi
+      - cd drone-haskell
+      - stack build
+      - stack test
+      - cp -a ~/.stack $CI_WORKSPACE/.stack
 
   rebuild-cache:
     image: drillster/drone-volume-cache
