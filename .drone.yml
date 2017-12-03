@@ -5,4 +5,11 @@ pipeline:
     commands:
       - cd drone-haskell
       - stack build
-      - stack test
+
+  test:
+    image: nrskt/haskell-build
+    commands:
+      - pwd
+      - ls -al
+      - cd drone-haskell
+      - ls -al
